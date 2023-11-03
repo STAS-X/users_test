@@ -1,12 +1,12 @@
-import React from "react";
-import Counter from "./features/counter/Counter";
+import React, { FC } from 'react';
 
-function App(): JSX.Element {
-  return (
-    <div className="App">
-      <Counter />
-    </div>
-  );
-}
+import { AppRouter } from '@/app/providers/router/ui/AppRouter';
+import { ContentLayout } from './shared/lib/layout/ContentLayout/ContentLayout';
 
-export default App;
+export const App: FC = () => {
+	return (
+		<div className="App">
+			<ContentLayout content={<AppRouter />} />
+		</div>
+	);
+};

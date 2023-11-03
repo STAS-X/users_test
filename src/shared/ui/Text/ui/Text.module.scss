@@ -1,0 +1,82 @@
+.text {
+	margin: 0;
+	pointer-events: none;
+}
+
+.primary {
+	padding: 0;
+}
+
+.title {
+	font: var(--font-l);
+	color: var(--primary-color);
+}
+
+.content {
+	font: var(--font-m);
+	color: var(--secondary-color);
+}
+
+.error {
+	.title {
+		color: var(--red-light);
+	}
+
+	.content {
+		color: var(--red-dark);
+	}
+}
+
+.secondary {
+	.title {
+		color: #262C40;
+;
+	}
+
+	.content {
+		color: #8189A3;
+;
+	}
+}
+
+.align-right {
+	text-align: right;
+}
+
+.align-left {
+	text-align: left;
+}
+
+.align-center {
+	text-align: center;
+}
+
+.size_s {
+	.title {
+		font: var(--font-m);
+	}
+
+	.content {
+		font: var(--font-s);
+	}
+}
+
+.size_m {
+	.title {
+		font: var(--font-l);
+	}
+
+	.content {
+		font: var(--font-m);
+	}
+}
+
+.size_l {
+	.title {
+		font: var(--font-xl);
+	}
+
+	.content {
+		font: var(--font-l);
+	}
+}

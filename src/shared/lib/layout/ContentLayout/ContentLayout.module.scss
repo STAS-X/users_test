@@ -1,0 +1,32 @@
+.ContentLayout {
+	height: 100vh;
+	min-width: 1250px;
+	display: grid;
+	grid-template-areas: 'header content footer';
+	grid-template-columns: minmax(auto, min-content) 1fr minmax(auto, min-content);
+	grid-auto-flow: column dense;
+	background-color: black;
+}
+
+.header {
+	grid-area: header;
+	width: 1200;
+	height: auto;
+}
+
+.content {
+	grid-area: content;
+	width: 1250px;
+	height: 720px;
+	max-height: 100vh;
+	justify-self: center;
+	align-self: center;
+	overflow: hidden;
+	overflow-y: auto;
+}
+
+.footer {
+	grid-area: footer;
+	width: 1200;
+	height: auto;
+}

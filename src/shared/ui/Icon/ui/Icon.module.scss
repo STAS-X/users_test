@@ -1,0 +1,32 @@
+.icon {
+	stroke-width: 1;
+	fill: none;
+	pointer-events: none;
+}
+
+.none {
+	fill: none;
+	stroke: none;
+}
+
+.standart {
+	stroke: black;
+}
+
+.alert {
+	stroke: red;
+}
+
+.purple {
+	stroke:#432EAB;
+}
+
+.clickable :not(.disabled) {
+	cursor: pointer;
+	pointer-events: all;
+}
+
+.disabled {
+	opacity: 0.4;
+	cursor: not-allowed;
+}

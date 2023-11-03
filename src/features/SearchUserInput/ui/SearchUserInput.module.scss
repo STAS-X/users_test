@@ -1,0 +1,34 @@
+.container {
+	width: 1140px;
+}
+
+.searchwrapper {
+	height: 48px;
+	padding: 10px;
+	border: 1px solid #d4defe;
+	&:hover,
+	&:focus-within {
+		outline: aqua solid 1px;
+		outline-offset: 0;
+	}
+
+	&.none {
+		border-radius: 0;
+	}
+	&.standart {
+		border-radius: 24px;
+	}
+	&.circle {
+		border-radius: 50%;
+	}
+}
+
+input {
+	width: 100%;
+	height: auto;
+	border-radius: 10px;
+	padding-inline: 10px;
+	&:focus {
+		outline: antiquewhite solid 1px;
+	}
+}
