@@ -1,5 +1,5 @@
 .icon {
-	stroke-width: 1;
+	stroke-width: 0.5;
 	fill: none;
 	pointer-events: none;
 }
@@ -18,7 +18,7 @@
 }
 
 .purple {
-	stroke:#432EAB;
+	stroke: #432eab;
 }
 
 .clickable :not(.disabled) {
@@ -29,4 +29,9 @@
 .disabled {
 	opacity: 0.4;
 	cursor: not-allowed;
+}
+
+.icon > button:hover {
+	outline-offset: 3px;
+	outline: 1px dashed #432eab;
 }

@@ -1,3 +1,6 @@
 export { fetchUsersBySearch } from './model/services/getUsersBySearch'
-export { getLoadingStatus, getError, getUsersData, getUsersCount } from './model/selectors/getUsersData'
+export { usersActions } from './model/slices/usersSlice'
+export { getLoadingStatus, getUserError, getUserById, getUsersData, getUsersCount } from './model/selectors/getUsersData'
 export type { UserSchema, UserData } from './model/types/userShema'
+export {UserModal} from './ui/UserForm/UserModal/UserModal'
+export { UserInfoForm } from './ui/UserForm/UserInfoForm/UserInfoForm'

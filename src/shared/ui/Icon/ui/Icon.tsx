@@ -31,21 +31,23 @@ export const Icon: FC<IconProps> = memo((props: IconProps) => {
 		...others
 	} = props;
 
-	const clickToSVG = clickable
-		? onIconClick
-		: () => {
-				return;
-		  };
-
-	return (
+	return clickable ? (
+		<button onClick={onIconClick}>
+			<Svg
+				className={classNames(classes.icon, { [classes.disabled]: disabled, [classes.clickable]: clickable }, [
+					classes[variant],
+					className
+				])}
+				width={width}
+				height={height}
+				{...others}
+			/>
+		</button>
+	) : (
 		<Svg
-			className={classNames(classes.icon, { [classes.disabled]: disabled, [classes.clickable]: clickable }, [
-				classes[variant],
-				className
-			])}
+			className={classNames(classes.icon, { [classes.disabled]: disabled }, [classes[variant], className])}
 			width={width}
 			height={height}
-			onClick={clickToSVG}
 			{...others}
 		/>
 	);

@@ -2,15 +2,28 @@
 	border: none;
 	outline: none;
 	box-shadow: none;
+	overflow: hidden;
 	padding: 24px;
-	cursor: pointer;
 
-	&:hover {
+	&[role='card']:hover {
+		cursor: pointer;
 		outline: #d4defe solid 1.5px;
 		transform: scale(1.01);
 		box-shadow: 0px 0px 30px 0px #473c944f;
 	}
-	transition: all ease 0.3s;
+	transition:
+		all ease 0.3s,
+		outline 0s;
+}
+
+.standart {
+	width: 360px;
+	height: 320px;
+}
+
+.formCard {
+	width: 500px;
+	height: 485px;
 }
 
 .max {
@@ -18,7 +31,11 @@
 }
 
 .shadow {
-	box-shadow: 0px 0px 20px 0px #0000001A;
+	box-shadow: 0px 0px 20px 0px #0000001a;
+
+	&[role='modal'] {
+		box-shadow: 0px 0px 20px 0px #000000a1;
+	}
 }
 
 .normal {

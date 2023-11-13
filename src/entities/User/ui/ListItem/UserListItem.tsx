@@ -1,37 +1,48 @@
-import React, { FC, memo } from 'react';
+import React, { FC, memo, useMemo } from 'react';
 import { Card } from '@/shared/ui/Card';
-import { Stack } from '@/shared/ui/Stack';
 import { Text } from '@/shared/ui/Text/ui/Text';
 import { UserData } from '../../model/types/userShema';
 import Phone from '@/shared/assets/phone.svg?react';
 import Email from '@/shared/assets/email.svg?react';
 import { Icon } from '@/shared/ui/Icon';
+import { EntityId } from '@reduxjs/toolkit';
+import { useAppSelector } from '@/app/providers/StoreProvider/config/hooks';
+import { getUserById } from '../../model/selectors/getUsersData';
 
 interface UserListItemProps {
-	data: UserData;
+	userId: EntityId;
 	className?: string;
+	onOpenInfoForm: () => void;
 }
 
 export const UserListItem: FC<UserListItemProps> = memo((props: UserListItemProps) => {
-	const {
-		data: { name, phone, email },
-		className = ''
-	} = props;
+	const { userId, className = '', onOpenInfoForm } = props;
+
+	const { name = '', phone = '', email = '' } = useAppSelector(getUserById(userId)) as UserData;
+
+	const contentData = useMemo(() => {
+		return [
+			{
+				left: <Icon Svg={Phone} width={24} height={24} variant={'purple'} />,
+				right: <Text className={'text-left'} size={'sm'} variant={'secondary'} content={phone} />
+			},
+			{
+				left: <Icon Svg={Email} width={24} height={24} variant={'purple'} />,
+				right: <Text className={'text-left'} size={'sm'} variant={'secondary'} content={email} />
+			}
+		];
+	}, [phone, email]);
 
 	return (
-		<Card className={`${className} w-[360px] h-[320px]`} shadow>
-			<Stack direction={'column'} align={'start'} gap={16}>
-				<Text className={'text-left text-[#262C40]'} size={'l'} content={name} />
-				<div className={'-mt-[10px]'}></div>
-				<Stack direction={'row'} justify={'start'} gap={16}>
-					<Icon Svg={Phone} width={24} height={24} variant={'purple'} />
-					<Text className={'text-left text-[#8189A3]'} size={'m'} content={phone} />
-				</Stack>
-				<Stack direction={'row'} justify={'start'} gap={16}>
-					<Icon Svg={Email} width={24} height={24} variant={'purple'} />
-					<Text className={'text-left text-[#8189A3]'} size={'m'} content={email} />
-				</Stack>
-			</Stack>
-		</Card>
+		<Card
+			className={`${className} standart`}
+			header={<Text className={'text-left'} size={'l'} content={name} />}
+			content={contentData}
+			paddings={24}
+			gaps={12}
+			sectionGaps={24}
+			shadow
+			onClick={onOpenInfoForm}
+		></Card>
 	);
 });

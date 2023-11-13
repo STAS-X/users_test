@@ -11,7 +11,7 @@ export const UserListItemSkeleton: FC<UserListItemSkeletonProps> = memo((props: 
 	const { className = '' } = props;
 
 	return (
-		<Card className={`${className} w-[360px] h-[320px]`} shadow>
+		<Card className={`${className} w-[360px] h-[320px]`} shadow role={'skeleton'}>
 			<Stack direction={'column'} align={'start'} gap={16}>
 				<Skeleton width={'100%'} height={24} border={10} />
 				<div className={'-mt-[10px]'}></div>

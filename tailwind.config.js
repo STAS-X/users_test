@@ -1,7 +1,11 @@
 module.exports = {
   content: ["./src/**/*.tsx", "./src/**/*.ts"],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'user-nodata': "url('./src/shared/assets/nodata.jpg')"
+      }
+    },
   },
   plugins: [],
 };

@@ -8,9 +8,9 @@
 	background-color: black;
 }
 
-.header {
+.header .footer {
 	grid-area: header;
-	width: 1200;
+	width: auto;
 	height: auto;
 }
 
@@ -23,10 +23,4 @@
 	align-self: center;
 	overflow: hidden;
 	overflow-y: auto;
-}
-
-.footer {
-	grid-area: footer;
-	width: 1200;
-	height: auto;
 }

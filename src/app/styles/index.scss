@@ -1,4 +1,36 @@
-/* stylelint-disable no-descending-specificity */
+
+@font-face { 
+    font-family: "ProximaNovaRegular";
+    src: url("../fonts/ProximaNovaRegular/ProximaNovaRegular.eot");
+    src: url("../fonts/ProximaNovaRegular/ProximaNovaRegular.eot?#iefix")format("embedded-opentype"),
+    url("../fonts/ProximaNovaRegular/ProximaNovaRegular.woff") format("woff"),
+    url("../fonts/ProximaNovaRegular/ProximaNovaRegular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 400;
+}
+
 @import 'reset';
 @import 'variables/global';
 
+*::-webkit-scrollbar {
+	width: 10px; /* ширина scrollbar */
+	height: 10px; /* высота scrollbar */
+}
+
+*::-webkit-scrollbar-track {
+	margin-block: 5px;
+	border-radius: 10px; /* закругления дорожки */
+}
+
+*::-webkit-scrollbar-thumb {
+	border-radius: 10px; /* закругления плашки */
+	border: 5px solid transparent; /* padding вокруг плашки */
+	background: #d4defe; /* цвет дорожки */
+}
+
+*::-webkit-scrollbar-thumb:horizontal {
+	background: none; /* убираем заполнение горизонтального скролла */
+	border: none; /* убираем границы горизонтального скролла */
+	border: 2px solid transparent; /* цвет границы горизонтального скролла */
+	background: #d4defe; /* цвет дорожки */
+}

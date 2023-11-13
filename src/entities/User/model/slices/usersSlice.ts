@@ -1,4 +1,4 @@
-import { UserSchema, UserData } from '../types/userShema';
+import { UserSchema, UserData, LoadingStatus } from '../types/userShema';
 import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { fetchUsersBySearch } from '../services/getUsersBySearch';
 
@@ -19,6 +19,9 @@ const usersSlice = createSlice({
 		},
 		setError: (state, action: PayloadAction<string>) => {
 			state.error = action.payload;
+		},
+		setStatus: (state, action: PayloadAction<LoadingStatus>) => {
+			state.status = action.payload;
 		}
 	},
 	extraReducers: (builder) => {
@@ -30,7 +33,7 @@ const usersSlice = createSlice({
 		builder.addCase(fetchUsersBySearch.fulfilled, (state, action) => {
 			state.status = 'idle';
 			console.error(action.payload, action.payload.length, 'data payload');
-			usersAdapter.setAll(state, action.payload);
+			if (action.payload.length > 0 && usersAdapter.getSelectors().selectTotal(state) === 0) usersAdapter.setAll(state, action.payload);
 			state.error = undefined;
 		});
 		builder.addCase(fetchUsersBySearch.rejected, (state, action) => {

@@ -1,6 +1,7 @@
 .text {
 	margin: 0;
 	pointer-events: none;
+	white-space: normal;
 }
 
 .primary {
@@ -24,6 +25,18 @@
 
 	.content {
 		color: var(--red-dark);
+	}
+}
+
+.primary {
+	.title {
+		color: #262C40;
+;
+	}
+
+	.content {
+		color: #262C40;
+;
 	}
 }
 
@@ -68,6 +81,16 @@
 
 	.content {
 		font: var(--font-m);
+	}
+}
+
+.size_sm {
+	.title {
+		font: var(--font-l);
+	}
+
+	.content {
+		font: var(--font-sm);
 	}
 }
 

@@ -15,9 +15,10 @@ textarea,
 select {
 	margin: 0;
 	font: inherit;
+	letter-spacing: 0em;
 
 	&::placeholder {
-		font: inherit;
+		font: var(--font-sm);
 	}
 }
 
@@ -34,7 +35,7 @@ h6 {
 body {
 	width: 100vw;
 	height: 100vh;
-	color-scheme: black;
+	color-scheme: light;
 	background: black;
 
 	& * {

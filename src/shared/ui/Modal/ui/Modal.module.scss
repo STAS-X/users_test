@@ -1,0 +1,41 @@
+.modal {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	pointer-events: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: transparent;
+	z-index: var(--hidden-z-index);
+	transition: var(--animation-delay) ease;
+}
+
+.content {
+	font: var(--font-m);
+	background: transparent;
+	transition: var(--animation-delay) ease;
+	transform: scale(0.5);
+	z-index: 1;
+}
+
+.modal.opened {
+	pointer-events: auto;
+	z-index: var(--modal-z-index);
+	opacity: 1;
+
+	.content {
+		transform: scale(1);
+	}
+}
+
+.modal.closed {
+	pointer-events: none;
+	opacity: 0;
+
+	.content {
+		transform: scale(0.5);
+	}
+}

@@ -30,7 +30,9 @@ export const fetchUsersBySearch = createAppAsyncThunk<UserData[], UsersBySearchP
 					term
 				} : {}
 			});
-			console.log(response.data, 'get data from json server');
+
+			//throw new Error("Внимание ошибка!");
+			//console.log(response.data, 'get data from json server');
 			//if (!response.data) throw new Error(`Пользователи на сервере не найдены`);
 			const usersWithId = (await fetchUsers(response.data)).map((user, id) => {
 				if (!user.id) user.id = String(id);

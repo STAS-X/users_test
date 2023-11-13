@@ -25,7 +25,7 @@ export const MainPage: FC = memo(() => {
 	return (
 		<PageWrapper>
 			{/*<h1 className={'mb-2'}>Главная страница</h1>*/}
-			<div className={'flex w-full flex-wrap gap-[32px] justify-center'}>
+			<div className={'flex w-full h-full flex-wrap gap-[32px] justify-center truncate'}>
 				<SearchUserInput
 					onSearchUsers={fetchUsersByFTS}
 					placeholder={'Введите запрос для полнотекстового поиска пользователей'}

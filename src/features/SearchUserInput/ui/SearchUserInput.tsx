@@ -6,8 +6,10 @@ import classes from './SearchUserInput.module.scss';
 import { Text } from '@/shared/ui/Text/ui/Text';
 import Search from '@/shared/assets/search.svg?react';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
-import { useAppSelector } from '@/app/providers/StoreProvider/config/hooks';
+import { useAppDispatch, useAppSelector } from '@/app/providers/StoreProvider/config/hooks';
 import { getLoadingStatus, getUsersCount } from '@/entities/User';
+import { FadeLoader } from '@/shared/ui/Loader';
+import { usersActions } from '@/entities/User/model/slices/usersSlice';
 
 type HTMLInputProps = Omit<
 	InputHTMLAttributes<HTMLInputElement>,
@@ -53,10 +55,14 @@ export const SearchUserInput: FC<SearchInputUserProps> = (props: SearchInputUser
 	const loadStatus = useAppSelector(getLoadingStatus);
 	const count = useAppSelector(getUsersCount);
 
+	const dispatch = useAppDispatch();
+
 	const refetchUsers = (searchMask: string) => {
 		if (isRefetch) {
 			setIsRefetch(false);
-			if (onSearchUsers) onSearchUsers(searchMask);
+			dispatch(usersActions.setStatus('refreshing'));
+			dispatch(usersActions.setUsersData([]));
+			if (onSearchUsers) setTimeout(() => onSearchUsers(searchMask), 500);
 		}
 	};
 
@@ -77,15 +83,18 @@ export const SearchUserInput: FC<SearchInputUserProps> = (props: SearchInputUser
 	};
 
 	return (
-		<div className={classNames(classes.container, {}, [])}>
-			<div className={'min-h-[20px] p-[5px] pl-[25px]'}>
-				{loadStatus === 'loading' && (
-					<Text
-						content={'Данные о пользователе загружаются...'}
-						size={'s'}
-						variant={'secondary'}
-						align={'align-left'}
-					/>
+		<div className={classNames(classes.searchcontainer, {}, [])}>
+			<div className={'min-h-[35px] p-[5px] pl-[25px]'}>
+				{(loadStatus === 'loading' || loadStatus === 'refreshing') && (
+					<Stack align={'center'} justify={'start'} direction={'row'} gap={25} max>
+						<Text
+							content={'Данные пользователей загружаются...'}
+							size={'s'}
+							variant={'secondary'}
+							align={'align-left'}
+						/>
+						<FadeLoader />
+					</Stack>
 				)}
 				{loadStatus === 'idle' && (
 					<Text

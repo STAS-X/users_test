@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { CSSProperties, FC, MutableRefObject } from 'react';
 import { ReactNode } from 'react';
 import { classNames } from '../../../lib/helpers/classNames';
 import { convertToStyleProperty } from '../../../lib/helpers/propertyToStackStyle';
@@ -12,12 +12,14 @@ type DivProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HT
 export interface StackProps extends DivProps {
 	className?: string;
 	children: ReactNode;
+	style?: CSSProperties;
 	justify?: FlexJustify;
 	align?: FlexAlign;
 	direction?: FlexDirection;
 	width?: string | number;
 	height?: string | number;
 	gap?: number;
+	overlap?: boolean;
 	max?: boolean;
 }
 
@@ -29,6 +31,7 @@ export const Stack: FC<StackProps> = (props: StackProps) => {
 		align = 'center',
 		direction = 'column',
 		max = false,
+		overlap = false,
 		width = '',
 		height = '',
 		gap = 8,
@@ -38,13 +41,13 @@ export const Stack: FC<StackProps> = (props: StackProps) => {
 
 	const transformWHtoTileWindStyle = max
 		? direction === 'column'
-			? 'w-full '
-			: 'h-full '
+			? 'h-full '
+			: 'w-full '
 		: width !== ''
 		? typeof width === 'number'
 			? `w-${width} `
 			: `w-[${width}] `
-		: (height !== '')
+		: height !== ''
 		? typeof height === 'number'
 			? `h-${height} `
 			: `h-[${height}] `
@@ -53,12 +56,12 @@ export const Stack: FC<StackProps> = (props: StackProps) => {
 
 	return (
 		<div
-			className={classNames('flex', {}, [transformWHtoTileWindStyle, className])}
+			className={classNames('flex', {}, [transformWHtoTileWindStyle, overlap ? 'truncate' : '', className])}
 			style={{
 				...style,
+				flexDirection: direction,
 				justifyContent: convertToStyleProperty(justify),
 				alignItems: convertToStyleProperty(align),
-				flexDirection: direction,
 				gap
 			}}
 			{...others}
