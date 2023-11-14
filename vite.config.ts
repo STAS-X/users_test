@@ -34,7 +34,7 @@ export default defineConfig({
   },
   define: {
     _DEV_MODE_: JSON.stringify(false),
-    _BASE_URL_: JSON.stringify('https://users-json-8rx86jrpq-stas-x.vercel.app'),
+    _BASE_URL_: JSON.stringify('https://localhost:3000'),
   },
   publicDir: 'public',
   build: {
