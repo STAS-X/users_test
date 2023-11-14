@@ -8,8 +8,9 @@ import { resolve } from 'path';
 export default defineConfig({
   plugins: [react(), svgr(), viteStaticCopy({
     targets: [{
-      src: ['src/shared/assets/nodata.jpg'],
-      dest: 'public-data'
+      src: ['src/shared/assets/*.jpg'],
+      dest: './assets',
+      overwrite: true
     }]
   })],
   // css: {
@@ -35,8 +36,7 @@ export default defineConfig({
     _DEV_MODE_: JSON.stringify(false),
     _BASE_URL_: JSON.stringify('https://users-json-8rx86jrpq-stas-x.vercel.app'),
   },
-  publicDir: resolve(__dirname, 'public'),
-  assetsInclude: ['**/*.gltf'],
+  publicDir: 'public',
   build: {
     target: 'esnext',
     minify: true,
@@ -46,7 +46,7 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
       },
       output: {
-        dir: resolve(__dirname, 'build'),
+        dir: resolve(__dirname, 'dist'),
 
       }
     }
