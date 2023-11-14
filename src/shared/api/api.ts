@@ -5,8 +5,8 @@ export const $apiAxios = axios.create({
 	baseURL: import.meta.env.BASE_URL
 });
 
-$apiAxios.interceptors.request.use((config) => {
-	// 	if (config.headers) config.headers.authorization = localStorage.getItem(USER_LS_KEY) ?? '';
-	if (config.headers) config.headers['Access-Control-Allow-Origin'] = "*"
-	return config;
-});
+// $apiAxios.interceptors.request.use((config) => {
+// 	// 	if (config.headers) config.headers.authorization = localStorage.getItem(USER_LS_KEY) ?? '';
+// 	if (config.headers) config.headers['Access-Control-Allow-Origin'] = "*"
+// 	return config;
+// });
