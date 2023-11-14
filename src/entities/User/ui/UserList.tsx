@@ -107,7 +107,7 @@ export const UserList: FC<UserListProps> = (props: UserListProps) => {
 					users.length > 3 && loadStatus === 'idle' ? 'overflow-y-auto' : 'overflow-hidden'
 				} ${
 					users.length === 0 && loadStatus === 'idle'
-						? 'bg-user-nodata bg-no-repeat bg-center'
+						? `${import.meta.env.DEV ? 'bg-user-nodata-dev' : 'bg-user-nodata'} bg-no-repeat bg-center`
 						: 'overflow-y-auto'
 				}`}
 				id={'userlist'}

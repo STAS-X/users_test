@@ -22,13 +22,23 @@ export default defineConfig({
     ]
   },
   server: {
-    host: '127.0.0.1'
+    host: 'localhost',
+    cors: true
+  },
+  preview: {
+    host: 'localhost',
+    cors: true
   },
   define: {
     _DEV_MODE_: JSON.stringify(false),
     _BASE_URL_: JSON.stringify('https://users-json-8rx86jrpq-stas-x.vercel.app'),
   },
+  publicDir: '/public',
+  assetsInclude: ['**/*.{png, jpg, woff?, ttf, otf}'],
   build: {
+    target: 'esnext',
+    minify: true,
+    cssCodeSplit: true,
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
