@@ -23,11 +23,9 @@ export default defineConfig({
   },
   server: {
     host: 'localhost',
-    cors: true
-  },
-  preview: {
-    host: 'localhost',
-    cors: true
+    cors: {
+      origin: false
+    }
   },
   define: {
     _DEV_MODE_: JSON.stringify(false),
