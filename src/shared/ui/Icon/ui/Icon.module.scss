@@ -31,7 +31,7 @@
 	cursor: not-allowed;
 }
 
-.icon > button:hover {
+button.iconbutton:hover {
 	outline-offset: 3px;
 	outline: 1px dashed #432eab;
 }

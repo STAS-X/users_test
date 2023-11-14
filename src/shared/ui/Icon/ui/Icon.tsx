@@ -32,7 +32,7 @@ export const Icon: FC<IconProps> = memo((props: IconProps) => {
 	} = props;
 
 	return clickable ? (
-		<button onClick={onIconClick}>
+		<button className={classes.iconbutton} onClick={onIconClick}>
 			<Svg
 				className={classNames(classes.icon, { [classes.disabled]: disabled, [classes.clickable]: clickable }, [
 					classes[variant],

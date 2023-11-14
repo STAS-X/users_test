@@ -1,4 +1,4 @@
-import React, { FC, memo, useMemo } from 'react';
+import React, { FC, memo, useCallback, useMemo } from 'react';
 import { Card } from '@/shared/ui/Card';
 import { Text } from '@/shared/ui/Text/ui/Text';
 import { UserData } from '../../model/types/userShema';
@@ -33,8 +33,25 @@ export const UserListItem: FC<UserListItemProps> = memo((props: UserListItemProp
 		];
 	}, [phone, email]);
 
+	const scrollCardAndOpenInfoForm = useCallback(
+		(userId: EntityId) => () => {
+			const userCard = document.querySelector(`div[data-index="user-${userId}"]`)?.parentElement;
+			if (userCard && userCard.parentElement) 
+				if (
+					userCard.offsetTop - userCard.clientHeight - userCard.parentElement.scrollTop + 70 < 10 ||
+					userCard.offsetTop - userCard.parentElement.scrollTop + 85 > userCard.parentElement.clientHeight
+				) {
+					//console.log('not in scroll area');
+					userCard.scrollIntoView({ block: 'center', behavior: 'smooth' });
+				}
+			onOpenInfoForm();
+		},
+		[onOpenInfoForm]
+	);
+
 	return (
 		<Card
+			data-index={`user-${userId}`}
 			className={`${className} standart`}
 			header={<Text className={'text-left'} size={'l'} content={name} />}
 			content={contentData}
@@ -42,7 +59,7 @@ export const UserListItem: FC<UserListItemProps> = memo((props: UserListItemProp
 			gaps={12}
 			sectionGaps={24}
 			shadow
-			onClick={onOpenInfoForm}
+			onClick={scrollCardAndOpenInfoForm(userId)}
 		></Card>
 	);
 });

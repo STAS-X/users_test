@@ -24,15 +24,15 @@ export const UserList: FC<UserListProps> = (props: UserListProps) => {
 
 	const loadStatus = useAppSelector(getLoadingStatus);
 
-	useEffect(() => {
-		if (loadStatus === 'idle' && users.length > 3) {
-			//console.log(loadStatus, document.querySelector('#userlist')?.style.display, 'loadstatus changed');
-			if (document.querySelector('#userlist')) {
-				(document.querySelector('#userlist') as HTMLDivElement).click();
-				//(document.querySelector('#userlist') as HTMLDivElement).style.display = '';
-			}
-		}
-	}, [loadStatus, users]);
+	// useEffect(() => {
+	// 	if (loadStatus === 'idle' && users.length > 3) {
+	// 		//console.log(loadStatus, document.querySelector('#userlist')?.style.display, 'loadstatus changed');
+	// 		if (document.querySelector('#userlist')) {
+	// 			(document.querySelector('#userlist') as HTMLDivElement).click();
+	// 			//(document.querySelector('#userlist') as HTMLDivElement).style.display = '';
+	// 		}
+	// 	}
+	// }, [loadStatus, users]);
 
 	const openInfoUserForm = useCallback(
 		(id: EntityId) => {
@@ -51,7 +51,7 @@ export const UserList: FC<UserListProps> = (props: UserListProps) => {
 		},
 		enter: (user: UserData) => {
 			//if (animateComments.findIndex((animatedComment) => animatedComment.id !== comment.id) > -1) return;
-			console.log(user.id, 'entering');
+			//console.log(user.id, 'entering');
 			return [
 				{
 					transform: 'translateY(-100%) scale(0.9)',
@@ -65,7 +65,7 @@ export const UserList: FC<UserListProps> = (props: UserListProps) => {
 			];
 		},
 		leave: (user: UserData) => {
-			console.log(user.id, 'deleting');
+			//console.log(user.id, 'deleting');
 			return [
 				{
 					transform: 'translateY(-100%) scale(0.9)',
