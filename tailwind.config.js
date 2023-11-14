@@ -4,7 +4,7 @@ module.exports = {
 		extend: {
 			backgroundImage: {
 				'user-nodata-dev': "url('/src/shared/assets/nodata.jpg')",
-				'user-nodata': "url('/assets/nodata.jpg')"
+				'user-nodata': "url('nodata.jpg')"
 			}
 		}
 	},

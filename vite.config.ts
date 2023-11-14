@@ -1,11 +1,17 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import svgr from 'vite-plugin-svgr';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 import { resolve } from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), svgr()],
+  plugins: [react(), svgr(), viteStaticCopy({
+    targets: [{
+      src: ['src/shared/assets/nodata.jpg'],
+      dest: 'public-data'
+    }]
+  })],
   // css: {
   // 	preprocessorOptions: {
   // 		scss: {
@@ -29,8 +35,8 @@ export default defineConfig({
     _DEV_MODE_: JSON.stringify(false),
     _BASE_URL_: JSON.stringify('https://users-json-8rx86jrpq-stas-x.vercel.app'),
   },
-  publicDir: '/public',
-  assetsInclude: ['**/*.{png, jpg, woff?, ttf, otf}'],
+  publicDir: resolve(__dirname, 'public'),
+  assetsInclude: ['**/*.gltf'],
   build: {
     target: 'esnext',
     minify: true,
