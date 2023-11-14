@@ -3,7 +3,7 @@
 	"version": "0.0.0",
 	"scripts": {
 		"vite:dev": "vite --port 8000",
-		"vite:build": "tsc && vite build",
+		"vite:build": "tsc && vite build --emptyOutDir",
 		"vite:serve": "vite preview",
 		"lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\""
 	},

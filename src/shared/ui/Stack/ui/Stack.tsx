@@ -56,7 +56,7 @@ export const Stack: FC<StackProps> = (props: StackProps) => {
 
 	return (
 		<div
-			className={classNames('flex', {}, [transformWHtoTileWindStyle, overlap ? 'truncate' : '', className])}
+			className={classNames('flex bg-white', {}, [transformWHtoTileWindStyle, overlap ? 'truncate' : '', className])}
 			style={{
 				...style,
 				flexDirection: direction,

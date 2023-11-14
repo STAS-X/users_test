@@ -11,16 +11,8 @@ export const MainPage: FC = memo(() => {
 
 	const fetchUsersByFTS = async (search: string) => {
 		const { payload: users } = await dispatch(fetchUsersBySearch({ search }));
-		console.log(users, users?.length, `founded users by search q text [${search}]`);
+		//console.log(users, users?.length, `founded users by search q text [${search}]`);
 	};
-
-	useEffect(() => {
-		if (users.length > 0) {
-			console.log(users, `Найдено ${users.length} пользователей по запросу`);
-		} else {
-			console.warn('Пользователи по запросу не найдены');
-		}
-	}, [users]);
 
 	return (
 		<PageWrapper>

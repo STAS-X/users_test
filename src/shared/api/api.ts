@@ -2,7 +2,7 @@ import axios from 'axios';
 // import { USER_LS_KEY } from '../const/localstorage';
 
 export const $apiAxios = axios.create({
-	baseURL: _BASE_URL_
+	baseURL: import.meta.env.VITE_BASE_URL
 });
 
 // $apiAxios.interceptors.request.use((config) => {

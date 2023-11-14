@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from '../../StoreProvider/config/hooks
 import { Slide, toast } from 'react-toastify';
 import classes from './ErrorBoundary.module.scss';
 import { usersActions } from '@/entities/User';
+import { Text } from '@/shared/ui/Text/ui/Text';
 
 interface ErrorBoundaryProps {
 	children: ReactNode;
@@ -20,23 +21,17 @@ export const ErrorBoundary: FC<ErrorBoundaryProps> = (props: ErrorBoundaryProps)
 
 	useEffect(() => {
 		if (error)
-			toast.error(
-				<div className={classes.toastContent}>
-					<h2>Внимание ошибка:</h2>
-					<h3>{error}</h3>
-				</div>,
-				{
-					//type: toast.TYPE.ERROR,
-					className: classes.toastError,
-					theme: 'colored',
-					transition: Slide,
-					onClose: handleCloseToastify,
-					hideProgressBar: true,
-					closeButton: true,
-					closeOnClick: true,
-					pauseOnHover: true
-				}
-			);
+			toast.error(<Text title={'Внимание ошибка:'} content={error} variant={'error'} size={'s'} wrap />, {
+				type: toast.TYPE.ERROR,
+				className: classes.toastError,
+				theme: 'colored',
+				transition: Slide,
+				onClose: handleCloseToastify,
+				hideProgressBar: true,
+				closeButton: true,
+				closeOnClick: true,
+				pauseOnHover: true
+			});
 	}, [error, handleCloseToastify]);
 
 	return <>{children}</>;

@@ -43,8 +43,6 @@ export const Card: FC<CardProps> = memo((props: CardProps) => {
 		...otherProps
 	} = props;
 
-	console.log(otherProps,'Пропсы для карты');
-
 	return (
 		<div
 			className={classNames(classes.card, { [classes.max]: max, [classes.shadow]: shadow }, [
@@ -54,7 +52,6 @@ export const Card: FC<CardProps> = memo((props: CardProps) => {
 			])}
 			style={{ padding: paddings }}
 			role={role}
-			//onTransitionEnd={() => console.log('transition has ended')}
 			{...otherProps}
 		>
 			{(header || footer || content.length > 0) && (

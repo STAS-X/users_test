@@ -33,7 +33,7 @@ export function createReduxStore(
     MiddlewareArray<ThunkMiddleware<StateSchema, AnyAction, ExtraThunkArgs>[]>
   >({
     reducer: rootReducer,
-    devTools: _DEV_MODE_,
+    devTools: import.meta.env.DEV,
     preloadedState: initialState,
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
