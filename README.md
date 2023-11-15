@@ -2,7 +2,7 @@
 
 This is a [React](https://reactjs.org) + [TypeScript](https://www.typescriptlang.org/) + [Tailwind](https://tailwindcss.com/) + [RTK](https://redux-toolkit.js.org/) + [eslint](https://eslint.org/) boilerplate built with [Vite](https://vitejs.dev).
 
-## What's inside?
+## Проект основан на следующих библиотеках:
 
 -   [ReactJS](https://reactjs.org)
 -   [Vite](https://vitejs.dev)
@@ -11,47 +11,26 @@ This is a [React](https://reactjs.org) + [TypeScript](https://www.typescriptlang
 -   [RTK](https://redux-toolkit.js.org/)
 -   [ESLint](https://eslint.org)
 
-## Getting started
+## О проекте
 
-1. Clone the repository.
+Проект написан в качестве тестового задания по оформлению (стилизации) сведений о сущности пользователей в краткой и детальной формах.
+Краткая форма представлена в виде карточки (компонент [Card]) построчно размещенной по 3 штуки в строке (flex). Фильтрация пользователей
+осуществляется посредством полнотекстового запроса (по всем полям сущностей) через поисковую строку. Запрос через функционал asyncthunk
+(асинхронный запрос данных на сервере) на базе библиотеки axios направляется на фейковый сервер ([fastify]), которая считывает данные из заранее
+заготовленного json-файла (при необходимости проводит поиск кандидатов на совпадение по параметру ?term= или возвращает всех пользователей) и
+возвращает полученный результат клиенту. При нажатии на карточку пользователя отображается popover c детализированной информацией.
+Хранение полученных с сервера данных осуществляется в стейт менеджере на базе redux. Получение данных осуществляется через использование 
+мемоизированных селекторов и адаптера сущностей (EntityAdapter). Во время загрузки данных о пользователях в родительском контейнере отображается
+компонент [Skeleton Loader] (по итогу запроса над поисковой строкой указывается количество полученных с сервера сущностей).
+Для интерактивности добавлена анимация появления/исчезновения карточек пользователя при изменении поискового запроса ([Spring]).
+Для повышения удобства работы добавлена задержка по времени срабатывания запроса на сервер после ввода в поисковую строку (debounce).
+Визуализация возникновения ошибок осуществляется посредством библиотеки [react-tostify] HOC компонентом [ErrorBoundary].
+При желании подробнее с проектом можно ознакомиться по ссылке на [github-проекта](https://github.com/STAS-X/users_test),
+деплой проекта (production) доступен [здесь](https://users-test-project.netlify.app/).
 
-    ```bash
-    git clone https://github.com/IsaiaPhiliph/vite-reactts-tailwind-rtk-eslint.git
-    ```
+## Скрипты
 
-2. Access the project.
-
-    ```bash
-    cd vite-reactts-tailwind-rtk-eslint
-    ```
-
-3. Make it your own repository
-
-    ```bash
-    rm -rf .git
-    git init
-    ```
-
-4. Install dependencies.
-
-    ```bash
-    npm i
-    ```
-
-5. Start the development server.
-
-    ```bash
-    npm run dev
-    ```
-
-6. Build for production.
-
-    ```bash
-    npm run build
-    ```
-
-7. Test your production build.
-
-    ```bash
-    npm run serve
-    ```
+1. Запуск сервера в режиме разработки (development)	"vite:dev"
+2. Итоговая сборка проекта (production)	        	"vite:build"
+3. Локальный просмотр итоговой сборки (production)	"vite:serve"
+4. Проверка проекта на правила кодинга              "lint"
